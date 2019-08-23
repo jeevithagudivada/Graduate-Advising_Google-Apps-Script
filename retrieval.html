@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html>
+  <head>
+ <base target="_top">
+      
+           
+      
+       <?!= include('JavaScript'); ?>
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <?!= include('css'); ?>
+  </head>
+   <body>
+   <main>
+    
+   <?var url = getScriptUrl();?>
+  <div id="formholder" class="formholder">
+ <!-- The 1st form for retreivng data-->  
+  <form id="retreieform" method="get">
+  <a href="https://www.fullerton.edu"><img alt="California State Univerity Fullerton" src="https://www.fullerton.edu/ecs/cs/_resources/images/campuscss/csuf-logo-footer.png" /></a>
+  <h1>Changing Study Plan</h1>
+  <div class="form-row" style="padding:25px 50px 5px 100px ">
+  <div class="form-group col-md-3"><label>Please enter the CWID of the Student</label> </div>
+  <div class="form-group col-md-4"><input type ="text" id="cwid" class="form-control"></div>
+  
+  <div class="form-group col-md-5"><button type="button" class="btn btn-success" id="retrivesubmit"> submit </button></div>
+  </div>
+  </form>
+  </div>
+ 
+<!-- The 2nd form for submitting data--> 
+<!DOCTYPE html>
+
+  
+  
+  <div id="submitform" class="submitform" style="display : none">
+  <a href="https://www.fullerton.edu"><img alt="California State Univerity Fullerton" src="https://www.fullerton.edu/ecs/cs/_resources/images/campuscss/csuf-logo-footer.png" /></a>
+  <h1>Changing Study Plan</h1>
+    <form id="submitform" method="post" action="<?!= ScriptApp.getService().getUrl() ?>">
+ <span>
+                  <h2 class="heading" style="text-align :center; color: crimson">Student Details</h2>
+                  <div class="form-row">
+                        <div class="form-group col-md-6" style="padding: 25px 50px 5px 100px">
+                              <!-- CWID-->
+                              <label class="control-label ">Student's CWID</label>
+                              <input type="text" class="form-control" id="CWIDsubmit" name="full_name">
+                              <label>First Name</label>
+                              <input class="form-control" id="FirstName" placeholder="First Name">
+
+                        </div>
+
+                        <div class="form-group col-md-6" style="padding: 25px 50px 5px 100px">
+                              <label> Email ID</label>
+                              <input type="email" class="form-control" id="email" placeholder="@csu.fullerton.edu">
+
+
+                              <label>LastName</label>
+                              <input class="form-control" id="LastName" placeholder="Last Name">
+                        </div>
+                  </div>
+            </span>
+            <small><label>Study Plan &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; Master of Science in Computer Science</label></small>
+            <hr>
+            
+            <center>
+<small>
+<div style=" width: 900px;padding: 10px;border: 2px solid gray;margin: 0; color: white;font-family: 'Roboto Slab', serif;">
+     <div class="container">
+		<div class="row"> <p>The following preclassifications requriements have been met:</p> </div>
+		<div class="row">
+			<div class="col-1"><input type="checkbox" id="Check1"> BA</div>
+			<div class="col-1"><input type="checkbox" id="Check2"> BS</div>
+			<div class="col-1"><input type="checkbox" id="Check3"> Other</div>
+			<div class="col-1">from </div>
+			<div class="col-4"><input type="text" class="form-control" id="from"> </div>
+			<div class="col-1">Month/Year </div>
+			<div class="col-3"><input type="text" class="form-control" id="mon"> </div>
+		</div>
+		<div class="row">
+			<div class="col-3">Undergraduate major</div>
+			<div class="col-9"><input type="text" class="form-control" id="undermajor"></div>
+		</div>
+		<div class="row"> <input type="checkbox" id="Check4"> Minimum GPA of 2.5 regardless of the visa status, from deomesic(US) institutions with undergrad degree in enginering or computer science</div>
+			
+		<div class="row"> <input type="checkbox" id="Check5"> Minimum GPA of 2.5 from ABET accrediaed interbational institutions with undergard degree un enginering or computer science OR</div>
+		
+		<div class="row"> <input type="checkbox" id="Check6"> Minimum GPA of 3.0 from domestic (US) institutions with undergrad degree other thab engineering or comouter science OR</div>
+		
+		<div class="row"> <input type="checkbox" id="Check7"> Minimum GPA of 3.0 if undergrad degree is from non-ABET acceradiated internation instituations.</div>
+		
+		<div class="row"> <input type="checkbox" id="Check8"> If undergard degree is not in computer science, completed one course computer science programming with a grade of B- within the past two years.</div>
+		
+		<div class="row"> Satisfactory completion of the following courses or equivalent inclusing prerequisites: </div>
+		<div class="row">	
+			<div class="col-3"><input type="checkbox" id="CPSC 121"> CPSC 121</div>
+			<div class="col-3"><input type="checkbox" id="CPSC 323"> CPSC 323</div>
+			<div class="col-3"><input type="checkbox" id="CPSC 363"> CPSC 363</div>
+			<div class="col-3"><input type="checkbox" id="CPSC 270A"> CPSC 270A</div>
+		</div>
+		
+		<div class="row">	
+		    <div class="col-3"><input type="checkbox" id="CPSC 131"> CPSC 131</div>
+			<div class="col-3"><input type="checkbox" id="CPSC 335"> CPSC 335</div>
+			<div class="col-3"></div>
+			<div class="col-3"><input type="checkbox" id="CPSC 270B"> CPSC 270B</div>
+		</div>
+		
+		<div class="row">	
+		    <div class="col-3"><input type="checkbox" id="CPSC 240"> CPSC 240</div>
+			<div class="col-3"><input type="checkbox" id="CPSC 351"> CPSC 351</div>
+			<div class="col-3"></div>
+			<div class="col-3"><input type="checkbox" id="CPSC 338"> CPSC 338</div>
+		</div>
+	 </div>
+</div>
+</small>
+</center>
+<br>
+           <center><div style=" width: 900px;padding: 10px;border: 2px solid gray;margin: 0; color: white;font-family: 'Roboto Slab', serif;">
+            <small>Writing Requirements has been/will be met by(option and Date) <input type="text" id="EWPDate"></small>
+            <br><small> Or have taken the course to fulfill the requirement</small>
+            <div class="row" style="padding: 0px 50px 20px 50px">
+                  <div class="col-1">
+                        <label></label>
+                  </div>
+                  <div class="col-4">
+                        <input type="text" list="CourseList" class="form-control coursename" id="EWPcourse1Name">
+                  </div>
+                  <div class="col-2">
+                        <input type="text" class="form-control coursenumber" id="EWPcourse1Number">
+                  </div>
+                  <div class="col-1">
+                        <input type="text" class="form-control" id="EWPGrade1">
+                  </div>
+                  <div class="col-2">
+                              <input type="text" class="form-control" id="EWPsemester1">
+                  </div>
+                  <div class="col-2">
+                              <input type="text" class="form-control" id="EWPcomment1">
+                  </div>
+            </div>
+                </div></center>
+            
+            <!-- Heading-->
+            <div class="row" style="padding: 0px 50px 0px 50px; font-weight: bold">
+                        <div class="col-1">
+                              <label></label>
+                        </div>
+                        <div class="col-4">
+                                    <label>Course Name</label>
+                        </div>
+                        <div class="col-2">
+                                    <label>Course ID</label>
+                        </div>
+                        <div class="col-1">
+                                    <label>Grade</label>
+                        </div>
+                        <div class="col-2">
+                                    <label>Semester</label>
+                        </div>
+                        <div class="col-2">
+                                    <label>Comments</label>
+                        </div>
+            </div>
+                  
+            <!-- course 1-->
+            <div class="row" style="padding: 0px 50px 20px 50px">
+                  <div class="col-1">
+                        <label>Course1.</label>
+                  </div>
+                  <div class="col-4">
+                        <input type="text" list="CourseList" class="form-control coursename" id="course1Name">
+                  </div>
+                  <div class="col-2">
+                        <input type="text" class="form-control coursenumber" id="course1Number">
+                  </div>
+                  <div class="col-1">
+                        <input type="text" class="form-control" id="Grade1">
+                  </div>
+                  <div class="col-2">
+                              <input type="text" class="form-control" id="semester1">
+                  </div>
+                  <div class="col-2">
+                              <input type="text" class="form-control" id="comment1">
+                  </div>
+            </div>
+            <!-- course 2-->
+            <div class="row" style="padding: 0px 50px 20px 50px">
+                        <div class="col-1">
+                              <label>Course2.</label>
+                        </div>
+                        <div class="col-4">
+                              <input type="text" list="CourseList" class="form-control coursename" id="course2Name">
+                        </div>
+                        <div class="col-2">
+                              <input type="text" class="form-control coursenumber" id="course2Number">
+                        </div>
+                        <div class="col-1">
+                              <input type="text" class="form-control" id="Grade2">
+                        </div>
+                        <div class="col-2">
+                                    <input type="text" class="form-control" id="semester2">
+                        </div>
+                        <div class="col-2">
+                              <input type="text" class="form-control" id="comment2">
+                               </div>
+            </div>
+            <!-- course 3-->
+            <div class="row" style="padding: 0px 50px 20px 50px">
+                        <div class="col-1">
+                              <label>Course3.</label>
+                        </div>
+                        <div class="col-4">
+                              <input type="text" list="CourseList" class="form-control coursename" id="course3Name">
+                        </div>
+                        <div class="col-2">
+                              <input type="text" class="form-control coursenumber" id="course3Number">
+                        </div>
+                        <div class="col-1">
+                              <input type="text" class="form-control" id="Grade3">
+                        </div>
+                        <div class="col-2">
+                                    <input type="text" class="form-control" id="semester3">
+                        </div>
+                        <div class="col-2">
+                              <input type="text" class="form-control" id="comment3">
+                         </div>
+            </div>
+            <!-- course 4-->
+            <div class="row" style="padding: 0px 50px 20px 50px">
+                        <div class="col-1">
+                              <label>Course4.</label>
+                        </div>
+                        <div class="col-4">
+                              <input type="text" list="CourseList" class="form-control coursename" id="course4Name">
+                        </div>
+                        <div class="col-2">
+                              <input type="text" class="form-control coursenumber" id="course4Number">
+                        </div>
+                        <div class="col-1">
+                              <input type="text" class="form-control" id="Grade4">
+                        </div>
+                        <div class="col-2">
+                                    <input type="text" class="form-control" id="semester4">
+                        </div>
+                        <div class="col-2">
+                              <input type="text" class="form-control" id="comment4">
+                         </div>
+            </div>
+            <!-- course 5-->
+            <div class="row" style="padding: 0px 50px 20px 50px">
+                        <div class="col-1">
+                              <label>Course5.</label>
+                        </div>
+                        <div class="col-4">
+                              <input type="text" list="CourseList" class="form-control coursename" id="course5Name">
+                        </div>
+                        <div class="col-2">
+                              <input type="text" class="form-control coursenumber" id="course5Number">
+                        </div>
+                        <div class="col-1">
+                              <input type="text" class="form-control" id="Grade5">
+                        </div>
+                        <div class="col-2">
+                                    <input type="text" class="form-control" id="semester5">
+                        </div>
+                        <div class="col-2">
+                              <input type="text" class="form-control" id="comment5">
+                         </div>
+            </div>
+            <!-- course 6-->
+            <div class="row" style="padding: 0px 50px 20px 50px">
+                        <div class="col-1">
+                              <label>Course6.</label>
+                        </div>
+                        <div class="col-4">
+                              <input type="text" list="CourseList" class="form-control coursename" id="course6Name">
+                        </div>
+                        <div class="col-2">
+                              <input type="text" class="form-control coursenumber" id="course6Number">
+                        </div>
+                        <div class="col-1">
+                              <input type="text" class="form-control" id="Grade6">
+                        </div>
+                        <div class="col-2">
+                                    <input type="text" class="form-control" id="semester6">
+                        </div>
+                        <div class="col-2">
+                              <input type="text" class="form-control" id="comment6">
+                         </div>
+            </div>
+            <!-- course 7-->
+            <div class="row" style="padding: 0px 50px 20px 50px">
+                        <div class="col-1">
+                              <label>Course7.</label>
+                        </div>
+                        <div class="col-4">
+                              <input type="text" list="CourseList" class="form-control coursename" id="course7Name">
+                        </div>
+                        <div class="col-2">
+                              <input type="text" class="form-control coursenumber" id="course7Number">
+                        </div>
+                        <div class="col-1">
+                              <input type="text" class="form-control" id="Grade7">
+                        </div>
+                        <div class="col-2">
+                                    <input type="text" class="form-control" id="semester7">
+                        </div>
+                        <div class="col-2">
+                              <input type="text" class="form-control" id="comment7">
+                         </div>
+            </div>
+            
+            <!-- course 8-->
+            <div class="row" style="padding: 0px 50px 20px 50px">
+                        <div class="col-1">
+                              <label>Course8.</label>
+                        </div>
+                        <div class="col-4">
+                        <select id="course8Name" class="form-control coursename">
+                                    <option value="">--Software Engineering Courses--</option>
+                                    <option value="Systems and Software Standards and Requirements">Systems and Software Standards and Requirements</option>
+                                    <option value="Software Verification and Validation">Software Verification and Validation</option>
+                                    <option value="Software Maintenance">Software Maintenance </option>
+                                    <option value="Advanced Software Process">Advanced Software Process</option>
+                                    <option value="Software Design and Architecture">Software Design and Architecture</option>
+                                    <option value="Modern Software Management">Modern Software Management</option>
+                                    <option value="Software Measurement">Software Measurement</option>
+                                    <option value="Professional, Ethical and Legal Issues for Software Engineers">Professional, Ethical and Legal Issues for Software Engineers</option>
+                        </select>
+                        </div>
+                        <div class="col-2">
+                                  <input type="text" class="form-control coursenumber" id="course8Number">
+                        </div>
+                        <div class="col-1">
+                              <input type="text" class="form-control" id="Grade8">
+                        </div>
+                        <div class="col-2">
+                                    <input type="text" class="form-control" id="semester8">
+                        </div>
+                        <div class="col-2">
+                              <input type="text" class="form-control" id="comment8">
+                         </div>
+            </div>
+            <!-- course 9-->
+            <div class="row" style="padding: 0px 50px 20px 50px">
+                        <div class="col-1">
+                              <label>Course9.</label>
+                        </div>
+                        <div class="col-4">
+                              <input type="text" class="form-control" id="course9Name" value="Seminar in Computer Science"> 
+                        </div>
+                        <div class="col-2">
+                              <input type="text" class="form-control coursenumber" id="course9Number" value="CPSC 589">
+                        </div>
+                        <div class="col-1">
+                              <input type="text" class="form-control" id="Grade9">
+                        </div>
+                        <div class="col-2">
+                                    <input type="text" class="form-control" id="semester9">
+                        </div>
+                        <div class="col-2">
+                              <input type="text" class="form-control" id="comment9">
+                         </div>
+            </div>
+
+           
+
+            <!-- course 10-->
+            <div class="row" style="padding: 0px 45px 20px 50px">
+                        <div class="col-1">
+                              <label>Course10.</label>
+                        </div>
+                        <div class="col-4">
+                        <select id="course10Name" class="form-control coursename">
+                                    <option value="">--Select One--</option>
+                                    <option value="Project">Project </option>
+                                    <option value="Thesis">Thesis </option>
+                        </select>
+                        </div>
+                        <div class="col-2">
+                                    <input type="text" class="form-control coursenumber" id="course10Number">
+                        </div>
+                        <div class="col-1">
+                              <input type="text" class="form-control" id="Grade10">
+                        </div>
+                        <div class="col-2">
+                                    <input type="text" class="form-control" id="semester10">
+                        </div>
+                        <div class="col-2">
+                              <input type="text" class="form-control" id="comment10">
+                         </div>
+            </div>
+
+<datalist id="CourseList">
+    <option value="Software Architecture">
+    <option value="Software Process">
+    <option value="Database and Applications">
+    <option value="Web Programming and Data Management">
+    <option value="Advanced Database Management">
+	<option value="Cryptography">
+	<option value="Cloud Computing and Security">
+	<option value="Network Security Fundamentals">
+	<option value="Computer Communications">
+	<option value="Advanced Computer Networking">
+	<option value="Operating Systems Design">
+	<option value="Artificial Intelligence">
+	<option value="Data Mining and Pattern Recognition">
+	<option value="Expert Systems Design Theory">
+	<option value="Artificial Neural Networks">
+	<option value="Computational Bioinformatics">
+	<option value="Principles of Computer Graphics">
+	<option value="Game Programming">
+	<option value="Game Development Project">
+	<option value="Advanced Computer Graphics">
+</datalist>
+
+
+
+            <div class="row" style="padding: 10px 300px 0px 300px">
+            <button type="submit" class="col btn btn-success" id="submitsubmit">Submit</button>
+            </div><br>
+            <center><div style=" width: 900px;padding: 10px;border: 2px solid gray;margin: 0; color: white;font-family: 'Roboto Slab', serif;">
+            <small>Minimum 15 Units Computer Science; minimum 18 units 500-level.<br> *Required if not completed as an udergeraduate. Electives units will increase of course work was completed as an undergraduate</small>
+                </div></center>
+
+   </form>
+    
+    </div>
+    <center>
+    <div id="NotFound" style="display : none;width: 900px;font-size:40px;padding: 10px;color: white;font-family: 'Roboto Slab', serif">
+    
+     <p style="text-align:center; padding: 150px 50px 25px 100px; text-size: 50px ">Sorry!! looks like you have not submitted your study form before! Please enter correct CWID</p>
+     <div class="row" style="content-align:center; padding: 25px 50px 75px 100px; ">
+     <div class="col"><a href='<?=url?>?page=retrieval'> <input class="btn btn-primary" type='button' name='button' value='Re-Submmiting study Plan'></a></div>
+     <div class="col"><a href='<?=url?>?page=index'> <input class="btn btn-primary" type='button' name='button' value='Study Plan'></a></div>
+     <div class="col"><a href='<?=url?>?page=home'> <input class="btn btn-primary" type='button' name='button' value='Home Page'></a></div>
+     
+     </div>
+     
+    </div>
+    </center>
+   </main>
+    <script>
+    
+     document.getElementById("submitsubmit").addEventListener("click",doSubmission_ret);
+     document.getElementById("retrivesubmit").addEventListener("click",doRetrive);
+                      
+
+  $(".coursenumber").change(function() {
+                var value = $(this).val();
+				var result;
+				switch(value)
+				{
+					case "CPSC 440":
+					result = "Computer System Architecture";
+					break;
+					
+					case "CPSC 462":
+					result = "Software Design";
+					break;
+										
+					case "CPSC 597":
+					result = "Project";
+					break;
+                    
+                   			case "CPSC 598":
+					result = "Thesis";
+					break;
+					
+					case "CPSC 541":
+                    result = "Systems and Software Standards and Requirements";
+					break;
+					
+                    case "CPSC 542":
+                    result = "Software Verification and Validation";
+					break;
+                    
+                    case "CPSC 543":
+                    result = "Software Maintenance";
+					break;
+                    
+                    case "CPSC 544":
+                    result = "Advanced Software Process";
+					break;
+                    
+                    case "CPSC 545":
+                    result = "Software Design and Architecture";
+					break;
+                    
+                    case "CPSC 546":
+                    result = "Modern Software Management";
+					break;
+                    
+                    case "CPSC 547":
+                    result = "Software Measurement";
+					break;
+                    
+                    case "CPSC 548":
+                    result = "Professional, Ethical and Legal Issues for Software Engineers";
+					break;
+		    case "CPSC 463":
+		     result = "Software Testing";
+			break;
+
+		case "CPSC 464":
+		result = "Software Architecture";
+		break;
+
+		case "CPSC 466":
+		result = "Software Process";
+		break;
+
+		case "CPSC 431":
+		result = "Database and Applications";
+		break;
+
+		case "CPSC 473":
+		result = "Web Programming and Data Management";
+		break;
+
+		case "CPSC 531":
+		result = "Advanced Database Management";
+		break;
+
+		case "CPSC 452":
+		result = "Cryptography";
+		break;
+
+		case "CPSC 454":
+		result = "Cloud Computing and Security";
+		break;
+
+		case "CPSC 456":
+result = "Network Security Fundamentals";
+break;
+
+case "CPSC 471":
+result = "Computer Communications";
+break;
+
+case "CPSC 558":
+result = "Advanced Computer Networking";
+break;
+
+case "CPSC 551":
+result = "Operating Systems Design";
+break;
+
+case "CPSC 481":
+result = "Artificial Intelligence";
+break;
+
+case "CPSC 483":
+result = "Data Mining and Pattern Recognition";
+break;
+
+case "CPSC 583":
+result = "Expert Systems Design Theory";
+break;
+
+case "CPSC 585":
+result = "Artificial Neural Networks";
+break;
+
+case "CPSC 485":
+result = "Computational Bioinformatics";
+break;
+
+case "CPSC 484":
+result = "Principles of Computer Graphics";
+break;
+
+case "CPSC 486":
+result = "Game Programming";
+break;
+
+case "CPSC 489":
+result = "Game Development Project";
+break;
+case  "CPSC 566":
+result = "Advanced Computer Graphics";
+break;
+
+case  "CPSC 311":
+result = "Technical Writing for Computer Science";
+break;
+
+case  "ENGL 301":
+result = "Advanced College Writing";
+break;
+
+case  "TESL 301":
+result = "Advanced Writing for Nonnative English Speakers";
+break;
+//ISDS and MAth
+case "ISDS 402":
+                    result = "Database Mgmt Systems";
+					break;
+					
+case "ISDS 406":
+                    result = "Systems Analysis and Design";
+					break;
+
+case "ISDS 409":
+                    result = "Business Telecommunications";
+					break;
+
+case "ISDS 411":
+                    result = "Business Applications";
+					break;
+
+case "ISDS 415":
+                    result = "Principles of Business Intelligence";
+					break;	
+
+case "ISDS 418":
+                    result = "Privacy and Security";
+					break;
+					
+case "ISDS 435":
+                    result = "Integ Enterprise Info Systems";
+					break;
+
+case "ISDS 442":
+                    result = "Business Modeling using Spreadsheets";
+					break;
+
+case "ISDS 443":
+                    result = "Marketing Analytics";
+					break;
+
+case "ISDS 44":
+                    result = "Social Media Analytics";
+					break;
+
+case "ISDS 454":
+                    result = "Seminar in Information Systems Development";
+					break;
+					
+case "ISDS 473":
+                    result = "Applied Statistical Forecasting";
+					break;
+
+case "ISDS 474":
+                    result = "Data Mining for Managers";
+					break;
+
+case "ISDS 485":
+                    result = "Wireless Business Networks for IS";
+					break;
+
+case "ISDS 513":
+                    result = "Statistical Analysis";
+					break;	
+
+case "ISDS 514":
+                    result = "Decision Models";
+					break;
+					
+case "ISDS 516":
+                    result = "Logistic Analysis Techniques";
+					break;
+
+case "ISDS 526":
+                    result = "Forecasting for Analytical Decision Making";
+					break;
+
+case "ISDS 543":
+                    result = "Marketing Analytics for Managers";
+					break;
+
+case "ISDS 550":
+                    result = "Telecommunications and Business Networks";
+					break;
+
+case "ISDS 551":
+                    result = "Information Resource & IT Project Management";
+					break;
+					
+case "ISDS 552":
+                    result = "Systems Analysis and Design";
+					break;
+
+case "ISDS 553":
+                    result = "E-Commerce: Analysis & Evaluation";
+					break;
+
+case "ISDS 555":
+                    result = "Business Databases: Design and Processing";
+					break;
+
+case "ISDS 556":
+                    result = "Data Warehousing and Foundations of Business Intelligence";
+					break;	
+
+case "ISDS 557":
+                    result = "Issues in Business Information Technology";
+					break;
+					
+case "ISDS 560":
+                    result = "Advance Deterministic Models";
+					break;
+
+case "ISDS 563":
+                    result = "GIS for Business";
+					break;
+
+case "ISDS 574":
+                    result = "Data Mining for Business Applications";
+					break;
+
+case "MATH 270A":
+                    result = "Mathematical Structure I";
+					break;
+
+case "MATH 270B":
+                    result = "Mathematical Structure II";
+					break;
+
+case "MATH 338":
+                    result = "Statistical Applied to Natural Sciences";
+					break;					
+					
+					
+					
+					
+									
+				}
+				if($(this).attr('id') == "course1Number")
+                $("#course1Name").val(result);
+				
+				if($(this).attr('id') == "course2Number")
+                $("#course2Name").val(result);
+                
+                if($(this).attr('id') == "course3Number")
+                $("#course3Name").val(result);
+				
+				if($(this).attr('id') == "course4Number")
+                $("#course4Name").val(result);
+                
+                if($(this).attr('id') == "course5Number")
+                $("#course5Name").val(result);
+				
+				if($(this).attr('id') == "course6Number")
+                $("#course6Name").val(result);
+                
+                if($(this).attr('id') == "course7Number")
+                $("#course7Name").val(result);
+                
+                if($(this).attr('id') == "course8Number")
+                $("#course8Name").val(result);
+                
+		if($(this).attr('id') == "course9Number")
+                $("#course9Name").val(result);
+                
+                if($(this).attr('id') == "course10Number")
+                $("#course10Name").val(result);
+                
+                if($(this).attr('id') == "EWPcourse1Number")
+                $("#EWPcourse1Name").val(result);
+                
+                 
+            });
+                
+    </script>
+          
+                
+    </script>
+    
+    
+  </body>
+</html>
+
+

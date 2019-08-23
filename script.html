@@ -1,0 +1,14 @@
+<script>
+(function() {
+    // Get relevant elements and collections
+    const svgs = document.querySelectorAll('svg');
+
+    // Make all svgs invisible to screen readers
+    // svgs.forEach(svg => svg.setAttribute('aria-hidden', 'true'));
+    Array.prototype.forEach.call(svgs, (svg, i) => {
+      svg.setAttribute('aria-hidden', 'true');           
+    });
+  
+  })();
+  
+</script>

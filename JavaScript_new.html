@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <script>
+    
+     function loadingFunction(e)
+    {
+          e.preventDefault();
+          var cwid = document.getElementById("CWID1").value;
+          google.script.run.withSuccessHandler(loadtheform).retrievalarticulationdata(cwid);
+    }
+    
+    function loadtheform(data)
+    {
+          document.getElementById("firstform").style.display = "none";
+          document.getElementById("submitformmain").style.display = "block";
+          document.getElementById("CWID").value = document.getElementById("CWID1").value;
+          
+          if(data[0] === "Rejected")
+          {
+               document.getElementById("course6Name").value = "Computer Acrcitecture";
+               document.getElementById("course6Number").value = "CPSC 440";
+          }
+          if(data[1] === "Rejected")
+          {
+               document.getElementById("course7Name").value = "Software Design";
+               document.getElementById("course7Number").value = "CPSC 462";
+          }
+           
+				var softwarefound = "false";
+				 var semester;
+				 var coursenumber;
+				 var grade;
+				 var flag =0;
+				 var found;
+				 var lines = $("#trans").val().replace(/\r\n/g, "\n").split("\n");
+				 var numLines = lines.length;
+				 var transdata = {courseSubjects: {}, courseIDs: {}, semesters: {}, grades: {}};
+				 var count = 0;
+				 for (var i=0 ; i < numLines; i++) {
+					var line = lines[i];
+					var linesplit = line.trim().trim().split(/\ +/);
+					//document.getElementById("p").innerHTML += linesplit[0];
+					if (line.indexOf('Semester') !== -1 || (line.indexOf('Session') !== -1) && line.indexOf('Date') == -1) {
+					semester = linesplit[0] + " " +linesplit[2];
+					//document.getElementById("p").innerHTML += semester; 
+					var j = i+1;
+					line = lines[j];
+					linesplit = line.trim().trim().split(/\ +/);
+					while(line.indexOf('Dept/No') === -1)
+					{
+						
+						j++;
+						line = lines[j];
+						//console.log(line);
+					}
+					
+					j++;
+					
+					while(line.indexOf('Dates') === -1 )
+					{
+							//console.log(line);
+							var line = lines[j];
+							var linesplit = line.trim().trim().split(/\ +/);
+							coursenumber = linesplit[0]+ " " + linesplit[1];
+							var l = linesplit.length;
+							grade = linesplit[l-2];
+							//count++;
+							
+							if((linesplit[1] === "597" || linesplit[1] === "598") && (linesplit[0] === "CPSC")  )
+							{
+								document.getElementById("course10Number").value = coursenumber;
+								document.getElementById("Grade10").value = grade;
+								document.getElementById("semester10").value = semester;
+                                document.getElementById("course10Name").value = getName(coursenumber);
+							}
+							else if((linesplit[1] >= "541" && linesplit[1] <= "548") && (linesplit[0] === "CPSC") && softwarefound === "false")
+							{
+									softwarefound = "true";
+									document.getElementById("course8Number").value = coursenumber;
+									document.getElementById("Grade8").value = grade;
+									document.getElementById("semester8").value = semester;
+                                    document.getElementById("course8Name").value = getName(coursenumber);
+							}
+							else if((linesplit[1] === "589") && (linesplit[0] === "CPSC")  )
+							{
+								document.getElementById("course9Number").value = coursenumber;
+								document.getElementById("Grade9").value = grade;
+								document.getElementById("semester9").value = semester;
+                                document.getElementById("course9Name").value = getName(coursenumber);
+							}//need changes
+							else if((linesplit[1] === "440") && (linesplit[0] === "CPSC")  )
+							{
+								document.getElementById("course6Number").value = coursenumber;
+								document.getElementById("Grade6").value = grade;
+								document.getElementById("semester6").value = semester;
+                                document.getElementById("course6Name").value = getName(coursenumber);
+							}
+							else if((linesplit[1] === "462") && (linesplit[0] === "CPSC")  )
+							{
+								document.getElementById("course7Number").value = coursenumber;
+								document.getElementById("Grade7").value = grade;
+								document.getElementById("semester7").value = semester;
+                                document.getElementById("course7Name").value = getName(coursenumber);
+							}
+                            else if(((linesplit[1] === "311") && (linesplit[0] === "CPSC")) || ((linesplit[1] === "301") && ((linesplit[0] === "ENGL") || (linesplit[0] === "TESL"))) )
+                            {
+                                document.getElementById("EWPcourse1Number").value = coursenumber;
+                     
+								document.getElementById("EWPGrade1").value = grade;
+								document.getElementById("EWPsemester1").value = semester;
+                                document.getElementById("EWPcourse1Name").value = getName(coursenumber);
+                            }
+                            //checks 
+                            else if((linesplit[0] === "CPSC") &&((linesplit[1] === "121") ||  (linesplit[1] === "323") || (linesplit[1] === "363") || (linesplit[1] === "270A") || (linesplit[1] === "131") || (linesplit[1] === "335") || (linesplit[1] === "270B") || (linesplit[1] === "240") || (linesplit[1] === "351") ||(linesplit[1] === "338")))
+                            {
+                                  var idcheck =  linesplit[0]+" " +linesplit[1];
+                                  document.getElementById(idcheck).checked = "true";
+                            }
+							else{
+                            
+							count++;
+                            
+							var courseNumberID = "course" + count + "Number";
+							var gradeID = "Grade" + count;
+							var semesterID = "semester" + count;
+                            var courseNameID = "course" + count + "Name";
+                            console.log(courseNumberID);
+							document.getElementById(courseNumberID).value = coursenumber;
+							document.getElementById(gradeID).value = grade;
+							document.getElementById(semesterID).value = semester;
+                            document.getElementById(courseNameID).value = getName(coursenumber);
+							
+							}
+							//document.getElementById("p").innerHTML += semester + " " + coursenumber + " " + grade + "<br>";
+							//console.log(JSON.stringify(transdata));
+							//course6Name  course6Number Grade6 semester6
+							
+							j++;
+							var line = lines[j];
+							var linesplit = line.trim().trim().split(/\ +/);
+							
+					}
+					i =j;
+					}
+					
+				 }}
+				 
+			    
+            // Number to Name
+    function getName()
+    {
+     var courseNumber = arguments[0];
+     var result;
+         switch(courseNumber)
+				{
+					case "CPSC 440":
+					result = "Computer System Architecture";
+					break;
+					
+					case "CPSC 462":
+					result = "Software Design";
+					break;
+										
+					case "CPSC 597":
+					result = "Project";
+					break;
+                    
+                   			case "CPSC 598":
+					result = "Thesis";
+					break;
+					
+					case "CPSC 541":
+                    result = "Systems and Software Standards and Requirements";
+					break;
+					
+                    case "CPSC 542":
+                    result = "Software Verification and Validation";
+					break;
+                    
+                    case "CPSC 543":
+                    result = "Software Maintenance";
+					break;
+                   
+                    case "CPSC 476":
+                    result = "Web Programming and Data Management-Front End";
+					break;
+                    
+                    case "CPSC 544":
+                    result = "Advanced Software Process";
+					break;
+                    //CPSC 589
+                     case "CPSC 589":
+                    result = "Seminar in Computer Science";
+					break;
+                    
+                    
+                    case "CPSC 545":
+                    result = "Software Design and Architecture";
+					break;
+                    
+                    case "CPSC 546":
+                    result = "Modern Software Management";
+					break;
+                    
+                    case "CPSC 547":
+                    result = "Software Measurement";
+					break;
+                    
+                    case "CPSC 548":
+                    result = "Professional, Ethical and Legal Issues for Software Engineers";
+					break;
+		    case "CPSC 463":
+		     result = "Software Testing";
+			break;
+
+		case "CPSC 464":
+		result = "Software Architecture";
+		break;
+
+		case "CPSC 466":
+		result = "Software Process";
+		break;
+
+		case "CPSC 431":
+		result = "Database and Applications";
+		break;
+
+		case "CPSC 473":
+		result = "Web Programming and Data Management";
+		break;
+
+		case "CPSC 531":
+		result = "Advanced Database Management";
+		break;
+
+		case "CPSC 452":
+		result = "Cryptography";
+		break;
+
+		case "CPSC 454":
+		result = "Cloud Computing and Security";
+		break;
+
+		case "CPSC 456":
+result = "Network Security Fundamentals";
+break;
+
+case "CPSC 471":
+result = "Computer Communications";
+break;
+
+case "CPSC 558":
+result = "Advanced Computer Networking";
+break;
+
+case "CPSC 551":
+result = "Operating Systems Design";
+break;
+
+case "CPSC 481":
+result = "Artificial Intelligence";
+break;
+
+case "CPSC 483":
+result = "Data Mining and Pattern Recognition";
+break;
+
+case "CPSC 583":
+result = "Expert Systems Design Theory";
+break;
+
+case "CPSC 473":
+result = "Web Front-end Engineering";
+break;
+
+case "CPSC 476":
+result = "Web Back-end Engineering";
+break;
+
+case "CPSC 585":
+result = "Artificial Neural Networks";
+break;
+
+case "CPSC 485":
+result = "Computational Bioinformatics";
+break;
+
+case "CPSC 484":
+result = "Principles of Computer Graphics";
+break;
+
+case "CPSC 486":
+result = "Game Programming";
+break;
+
+case "CPSC 489":
+result = "Game Development Project";
+break;
+case  "CPSC 566":
+result = "Advanced Computer Graphics";
+break;
+
+case  "CPSC 311":
+result = "Technical Writing for Computer Science";
+break;
+
+case  "ENGL 301":
+result = "Advanced College Writing";
+break;
+
+case  "TESL 301":
+result = "Advanced Writing for Nonnative English Speakers";
+break;
+
+					
+									
+				}
+                
+                return result;
+    }
+
+ 
+    
+    
+    
+    function doSubmission()
+    {
+         var data = {};
+        console.log("Inside thehfwhtiwuytiyyyyyyyyy");
+        
+        //checkboxes
+        data.Check1	 = 	document.getElementById("Check1").checked;
+        data.Check2	 = 	document.getElementById("Check2").checked;
+        data.Check3	 = 	document.getElementById("Check3").checked;
+        data.Check4	 = 	document.getElementById("Check4").checked;
+        data.Check5	 = 	document.getElementById("Check5").checked;
+        data.Check6	 = 	document.getElementById("Check6").checked;
+        data.Check7	 = 	document.getElementById("Check7").checked;
+        data.Check8	 = 	document.getElementById("Check8").checked;
+        data.Check9	 = 	document.getElementById("CPSC 121").checked;
+        data.Check10	 = 	document.getElementById("CPSC 323").checked;
+        data.Check11	 = 	document.getElementById("CPSC 363").checked;
+        data.Check12	 = 	document.getElementById("CPSC 270A").checked;
+        data.Check13	 = 	document.getElementById("CPSC 131").checked;
+        data.Check14	 = 	document.getElementById("CPSC 335").checked;
+        data.Check15	 = 	document.getElementById("CPSC 270B").checked;
+        data.Check16	 = 	document.getElementById("CPSC 240").checked;
+        data.Check17	 = 	document.getElementById("CPSC 351").checked;
+        data.Check18	 = 	document.getElementById("CPSC 338").checked;
+        //from top
+        data.from = document.getElementById("fr").value ;
+        data.mon = document.getElementById("mon").value;
+        data.undermajor = document.getElementById("undermajor").value;
+
+        
+        data.cwid = document.getElementById("CWID").value;
+        
+        data.firstname = document.getElementById("FirstName").value;
+        data.lastname = document.getElementById("LastName").value;
+        data.email = document.getElementById("email").value;
+        
+        //EWP
+        data.ewpdate = document.getElementById("EWPDate").value;
+        
+        data.ewpcourse1Name = document.getElementById("EWPcourse1Name").value;
+        data.ewpcourse1Number = document.getElementById("EWPcourse1Number").value;
+        data.ewpcourse1Grade = document.getElementById("EWPGrade1").value;
+        data.ewpcourse1Semester = document.getElementById("EWPsemester1").value;
+        data.ewpcomment1 =  document.getElementById("EWPcomment1").value;
+        
+        
+        
+        data.course1Name = document.getElementById("course1Name").value;
+        data.course1Number = document.getElementById("course1Number").value;
+        data.course1Grade = document.getElementById("Grade1").value;
+        data.course1Semester = document.getElementById("semester1").value;
+        data.comment1 =  document.getElementById("comment1").value;
+        
+        data.course2Name = document.getElementById("course2Name").value;
+        data.course2Number = document.getElementById("course2Number").value;
+        data.course2Grade = document.getElementById("Grade2").value;
+        data.course2Semester = document.getElementById("semester2").value;
+        data.comment2 =  document.getElementById("comment2").value;
+        
+        data.course3Name = document.getElementById("course3Name").value;
+        data.course3Number = document.getElementById("course3Number").value;
+        data.course3Grade = document.getElementById("Grade3").value;
+        data.course3Semester = document.getElementById("semester3").value;
+        data.comment3 =  document.getElementById("comment3").value;
+        
+        data.course4Name = document.getElementById("course4Name").value;
+        data.course4Number = document.getElementById("course4Number").value;
+        data.course4Grade = document.getElementById("Grade4").value;
+        data.course4Semester = document.getElementById("semester4").value;
+        data.comment4 =  document.getElementById("comment4").value;
+        
+        data.course5Name = document.getElementById("course5Name").value;
+        data.course5Number = document.getElementById("course5Number").value;
+        data.course5Grade = document.getElementById("Grade5").value;
+        data.course5Semester = document.getElementById("semester5").value;
+        data.comment5 =  document.getElementById("comment5").value;
+        
+        data.course6Name = document.getElementById("course6Name").value;
+        data.course6Number = document.getElementById("course6Number").value;
+        data.course6Grade = document.getElementById("Grade6").value;
+        data.course6Semester = document.getElementById("semester6").value;
+        data.comment6 =  document.getElementById("comment6").value;
+        
+        data.course7Name = document.getElementById("course7Name").value;
+        data.course7Number = document.getElementById("course7Number").value;
+        data.course7Grade = document.getElementById("Grade7").value;
+        data.course7Semester = document.getElementById("semester7").value;
+        data.comment7 =  document.getElementById("comment7").value;
+        
+        data.course8Name = document.getElementById("course8Name").value;
+        data.course8Number = document.getElementById("course8Number").value;
+        data.course8Grade = document.getElementById("Grade8").value;
+        data.course8Semester = document.getElementById("semester8").value;
+        data.comment8 =  document.getElementById("comment8").value;
+        
+        data.course9Name = document.getElementById("course9Name").value;
+        data.course9Number = document.getElementById("course9Number").value;
+        data.course9Grade = document.getElementById("Grade9").value;
+        data.course9Semester = document.getElementById("semester9").value;
+        data.comment9 =  document.getElementById("comment9").value;
+        
+        data.course10Name = document.getElementById("course10Name").value;
+        data.course10Number = document.getElementById("course10Number").value;
+        data.course10Grade = document.getElementById("Grade10").value;
+        data.course10Semester = document.getElementById("semester10").value;
+        data.comment10 =  document.getElementById("comment10").value;
+    
+       
+                
+            
+        
+         google.script.run.onSubmit(data);
+        }
+        
+        
+        
+       
+    </script>
+  </head>
+  <body>
+    
+  </body>
+</html>
+
+

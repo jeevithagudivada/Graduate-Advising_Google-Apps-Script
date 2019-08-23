@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <?!= include('JavaScript'); ?>
+    <?!= include('css'); ?>
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+    <body style="background-color: lightskyblue">
+    <!-- <button onclick="google.script.run.withSuccessHandler(changePage).linkingnew('submit')">new</button>
+    <button onclick="google.script.run.withSuccessHandler(changePage).linkingnew('retrieval')">update</button> -->
+     <?var url = getScriptUrl();?>
+    <main> <center>
+     <label style="font-size: 2.5em">Student's Plan has been submitted successfully!! </label>
+     <div class="row" style="content-align:center; padding: 25px 50px 75px 100px; ">
+     
+     <div class="col"><a href='<?=url?>?page=index'> <input type='button' name='button' value='Study Plan'  class="btn btn-primary" > </a></div>
+     <div class="col"><a href='<?=url?>?page=home'> <input type='button' name='button' value='Home page'  class="btn btn-primary" > </a></div>
+    
+     </div>
+     </center></main>
+    
+  </body>
+</html>
+
+

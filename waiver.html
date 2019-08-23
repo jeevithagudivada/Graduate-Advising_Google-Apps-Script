@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+     <meta charset="UTF-8">
+     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+     <link href='https://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+      <?!= include('formcss'); ?>
+  </head>
+  <body>
+   <main>
+  <div id="bg"></div>
+  <a href="https://www.fullerton.edu"><img alt="California State Univerity Fullerton" src="https://www.fullerton.edu/ecs/cs/_resources/images/campuscss/csuf-logo-footer.png" /></a>
+  <h6>Computer Science Department</h6>
+<p><h5>International Course
+Articulation Request</h5>
+  <hr/>
+ <?var url = getScriptUrl();?><h1><a id="index" href='<?=url?>?page=home.html'>Home</a></h1>
+<div class="container">
+<form id="waiver">
+  <div class="form-group">
+    <h2 class="heading">Student Information </h2>
+    <div class="controls">
+        <input type="date" id="subdate" class="floatLabel" name="subdate" value="mm/dd/yyyy">
+        <label for="subdate" class="label-date"><i class="fa fa-calendar"></i>&nbsp;&nbsp;Form Submission Date</label>
+    </div>
+    <div class="controls">
+      <input type="text" id="name" class="floatLabel" name="name">
+      <label for="name">Student's Name</label>
+    </div>
+    <div class="controls">
+      <input type="text" id="email" class="floatLabel" name="email">
+      <label for="email">CSUF Email</label>
+    </div>   
+	<div class="controls">
+      <input type="number" id="cwid" class="floatLabel" name="cwid">
+      <label for="cwid">CWID</label>
+    </div>     
+    <div class="controls">
+      <input type="tel" id="phone" class="floatLabel" name="phone">
+      <label for="phone">Phone</label>
+    </div>
+     <br>
+	 <br>
+  </div>
+ 
+    <h2 class="heading">Course Details</h2>
+	 <div class="controls">
+	 <i class="fa fa-sort"></i>
+      <select class="floatLabel" name="subject">
+        <option value="blank">Please select</option>
+        <option value="CPSC 440">CPSC 440 - Computer System Architecture</option>
+        <option value="CPSC 462">CPSC 462 - Software Design</option>
+      </select>
+      <label for="fruit">Select the Course to Waiver</label>
+     </div>
+     <div class="controls">
+        <input type="date" id="compdate" class="floatLabel" name="compdate" value="mm/dd/yyyy">
+        <label for="compdate" class="label-date"><i class="fa fa-calendar"></i>&nbsp;&nbsp;Course Taken Date</label>
+    </div>
+	<div class="controls">
+      <input type="text" id="univ" class="floatLabel" name="univ">
+      <label for="univ">University Name</label>
+    </div>
+	<div class="controls">
+      <input type="text" id="grade" class="floatLabel" name="grade">
+      <label for="grade">Grade</label>
+    </div>
+	<br>
+	<br>
+	 <h2 class="heading">Waiver Decision! </h2>
+	
+    <div class="switch-field">
+      <div class="switch-title" >Approving the Waiver?</div>
+      <input type="radio" id="switch_left" name="switch_2" value="Approved" />
+      <label for="switch_left">Yes</label>
+      <input type="radio" id="switch_right" name="switch_2" value="Rejected" />
+      <label for="switch_right">No</label>
+    </div>
+	 
+        <p class="info-text">Feedback</p>
+        <br>
+        <div class="controls">
+          <textarea name="comments" class="floatLabel" id="comments"></textarea>
+          <label for="comments">Advisor Notes</label>
+          </div>
+    <div class="switch-title" >*Advisor must kindly provide the decision feedback to the student in the <u>Waiver Feedback doc</u> to complete the Articulation Process. </div>
+           
+<br>
+<br>
+<div class="mail">
+  <button type="submit" class="mail-btn" name="submit" >Submit Decision </button>
+   </div>
+   <br>
+</form>
+</div>
+</main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <?!= include('formscript'); ?>
+<script>
+const myForm = document.querySelector('#waiver');
+console.log(myForm);
+myForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            let myData={
+            'formdate':this.querySelector('input[name="subdate"]').value,
+            'sname':this.querySelector('input[name="name"]').value,
+            'mail':this.querySelector('input[name="email"]').value,
+            'cwid':this.querySelector('input[name="cwid"]').value,
+            'course':this.querySelector('select[name="subject"]').value,
+            'decision': this.querySelector(".switch-field input:checked").value,
+            'feedback':this.querySelector('textarea[name="comments"]').value,
+            'coursedate':this.querySelector('input[name="compdate"]').value,
+            'university':this.querySelector('input[name="univ"]').value,
+            'grade':this.querySelector('input[name="grade"]').value,
+            'phone':this.querySelector('input[name="phone"]').value,
+              
+            }
+            google.script.run.withSuccessHandler(onSuccess).addData(myData);
+            console.dir(myData);
+            document.getElementById('waiver').reset();
+})
+
+function onSuccess(data){
+//console.log(data);
+   if (data.status) {
+       container.innerHTML = '<h1>ID ' + data.trackingid + '</h1>';
+    }
+            console.log(data);
+ }
+
+
+
+</script>
+</body>
+</html>
+
+

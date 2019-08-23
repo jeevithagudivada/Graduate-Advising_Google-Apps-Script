@@ -1,0 +1,133 @@
+<style>
+  html, body {
+  height: 100vh;
+  /* fix IE11 */
+  min-height: 100%;
+  /* fix IE11 */
+  margin: 0;
+}
+
+body {
+  position: relative;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: Arial;
+}
+
+#bg {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: -1;
+  background-image: url(http://www.cumuonline.org/wp-content/uploads/2017/05/csu-fULLERTON.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+hr {
+  width: 100%;
+  border: 1px solid white;
+  margin-bottom: 1em;
+  display: block;
+}
+
+main label{
+font-family: 'Roboto Slab', serif;
+color: white;
+}
+
+main {
+  font-family: 'Lato', Arial, sans-serif;
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(0, 39, 84, 0.5);
+  background-image: linear-gradient(to bottom right, #002754, rgba(0, 39, 84, 0));
+  width: 100%;
+  min-height: 100%;
+}
+main img {
+  display: block;
+  padding: 1em;
+  margin: 0;
+}
+main h1, main h2 {
+  color: white;
+  text-align: center;
+  font-family: 'Roboto Slab', serif;
+  font-size: 2.5em;
+  margin-top: 0;
+}
+main h2 {
+  font-size: 2em;
+}
+main .grid {
+  margin-bottom: 2em;
+}
+@media all and (min-width: 480px) {
+  main .grid {
+    display: grid;
+    display: -ms-grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-row-gap: 50px;
+  }
+}
+@media all and (min-width: 700px) {
+  main .grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+  }
+}
+main .grid .item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  font-size: 1.2em;
+  padding: 1em;
+  transition: all 0.7s;
+}
+main .grid .item:hover, main .grid .item:focus {
+  transition: all 0.7s;
+  background-color: rgba(193, 77, 0, 0.8);
+}
+main .grid .item svg {
+  fill: white;
+  margin-bottom: 1em;
+}
+main .grid .item.item-1 {
+  -ms-grid-column: 1;
+  -ms-grid-row: 1;
+}
+main .grid .item.item-2 {
+  -ms-grid-column: 2;
+  -ms-grid-row: 1;
+}
+main .grid .item.item-3 {
+  -ms-grid-column: 3;
+  -ms-grid-row: 1;
+}
+main .grid .item.item-4 {
+  -ms-grid-column: 1;
+  -ms-grid-row: 2;
+}
+main .grid .item.item-5 {
+  -ms-grid-column: 2;
+  -ms-grid-row: 2;
+}
+main .grid .item.item-6 {
+  -ms-grid-column: 3;
+  -ms-grid-row: 2;
+}
+  </style>
+
+
+

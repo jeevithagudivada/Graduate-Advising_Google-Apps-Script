@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+   </head>
+   <body>
+<script>
+
+(function($){
+	function floatLabel(inputType){
+		$(inputType).each(function(){
+			var $this = $(this);
+			$this.focus(function(){
+				$this.next().addClass("active");
+			});
+			$this.blur(function(){
+				if($this.val() === '' || $this.val() === 'blank'){
+					$this.next().removeClass();
+				}
+			});
+		});
+	}
+	floatLabel(".floatLabel");
+})(jQuery);
+
+jQuery(".mail-btn").on("click touchstart", function () {
+    jQuery(this).addClass("fly");
+    that = this
+    setTimeout(function() {
+        jQuery(that).removeClass("fly");
+    }, 5400)
+});
+
+var file, 
+          reader = new FileReader();
+
+      reader.onloadend = function(e) {
+        if (e.target.error != null) {
+          showError("File " + file.name + " could not be read.");
+          return;
+        } else {
+          google.script.run
+            .withSuccessHandler(showSuccess)
+            .uploadFileToGoogleDrive(e.target.result, file.name, $('input#cwid').val(), $('input#name').val());
+        }
+      };
+
+      function showSuccess(e) {
+        if (e === "OK") { 
+          $('#forminner').hide();
+          $('#success').show();
+          $('#form').trigger("reset");
+        } else {
+          showError(e);
+        }
+      }
+      function submitForm() {
+
+        var files = $('#files')[0].files;
+
+        if (files.length === 0) {
+          showError("Please select a file to upload");
+          return;
+        }
+
+        file = files[0];
+
+        if (file.size > 1024 * 1024 * 5) {
+          showError("The file size should be < 5 MB.");
+          return;
+        }
+
+        //showMessage("Uploading file..");
+
+        reader.readAsDataURL(file);
+
+      }
+
+      function showError(e) {
+        $('#progress').addClass('red-text').html(e);
+      }
+
+      function showMessage(e) {
+        $('#progress').removeClass('red-text').html(e);
+      }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+      <?!= include('JavaScript'); ?>
+     <?!= include('css'); ?>
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+         
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"> </script>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  </head>
+  <body>
+  <main>
+    <!-- <button onclick="google.script.run.withSuccessHandler(changePage).linkingnew('submit')">new</button>
+    <button onclick="google.script.run.withSuccessHandler(changePage).linkingnew('retrieval')">update</button> -->
+     <?var url = getScriptUrl();?>
+     <center>
+     <a href="https://www.fullerton.edu"><img alt="California State Univerity Fullerton" src="https://www.fullerton.edu/ecs/cs/_resources/images/campuscss/csuf-logo-footer.png" /></a>
+  <h1>Welcome to ECS Study Plan Submission</h1>
+  <hr />
+    <h2></h2>
+	<br>
+    <br>
+     </center>
+     <div class="grid row" style="padding: 25px 50px 75px 100px;" >
+     <div class="col-6">
+     <a href='<?=url?>?page=submit'  class="item item-2"> <svg width="64" height="64" viewBox="0 0 24 24">
+  <i class="fa fa-file"  style="font-size:60px;color:white;text-shadow:2px 2px 4px #000000;padding: 5px 5px 5px 5px"></i>
+</svg> Submit Study Plan </a>
+     </div>
+       <div class="col-6">
+     <a href='<?=url?>?page=retrieval'  class="item item-2"> <svg width="64" height="64" viewBox="0 0 24 24">
+  <i class="fa fa-edit"  style="font-size:60px;color:white;text-shadow:2px 2px 4px #000000;padding: 5px 5px 5px 5px"></i>
+</svg> Study Plan change </a>
+     
+     </div>
+     <div class="col-6">
+     <a href='<?=url?>?page=home'  class="item item-2"> <svg width="64" height="64" viewBox="0 0 24 24">
+  <i class="fa fa-home"  style="font-size:60px;color:white;text-shadow:2px 2px 4px #000000;padding: 5px 5px 5px 5px"></i>
+</svg>Home Page  </a>
+     
+     </div>
+     
+   
+     </div>
+    
+     </main>
+   <script>  
+   
+  
+  function changePage(page) {
+    document.open();
+    document.write(page);
+    document.close();
+  }
+  
+   
+    </script>
+  </body>
+</html>
+
+

@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.js" data-modules="effect effect-bounce effect-blind effect-bounce effect-clip effect-drop effect-fold effect-slide"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+
+
+
+    
+    <script>
+    
+
+
+
+
+function doSubmission_ret()
+    {
+         var data = {};
+        
+        data.cwid = document.getElementById("CWIDsubmit").value;
+        
+        data.Check1	 = 	document.getElementById("Check1").checked;
+        data.Check2	 = 	document.getElementById("Check2").checked;
+        data.Check3	 = 	document.getElementById("Check3").checked;
+        data.Check4	 = 	document.getElementById("Check4").checked;
+        data.Check5	 = 	document.getElementById("Check5").checked;
+        data.Check6	 = 	document.getElementById("Check6").checked;
+        data.Check7	 = 	document.getElementById("Check7").checked;
+        data.Check8	 = 	document.getElementById("Check8").checked;
+        data.Check9	 = 	document.getElementById("CPSC 121").checked;
+        data.Check10	 = 	document.getElementById("CPSC 323").checked;
+        data.Check11	 = 	document.getElementById("CPSC 363").checked;
+        data.Check12	 = 	document.getElementById("CPSC 270A").checked;
+        data.Check13	 = 	document.getElementById("CPSC 131").checked;
+        data.Check14	 = 	document.getElementById("CPSC 335").checked;
+        data.Check15	 = 	document.getElementById("CPSC 270B").checked;
+        data.Check16	 = 	document.getElementById("CPSC 240").checked;
+        data.Check17	 = 	document.getElementById("CPSC 351").checked;
+        data.Check18	 = 	document.getElementById("CPSC 338").checked;
+        //from top
+        data.from = document.getElementById("from").value ;
+        data.mon = document.getElementById("mon").value;
+        data.undermajor = document.getElementById("undermajor").value;
+
+        data.ewpdate = document.getElementById("EWPDate").value;
+        data.ewpcourse1Name = document.getElementById("EWPcourse1Name").value;
+        data.ewpcourse1Number = document.getElementById("EWPcourse1Number").value;
+        data.ewpcourse1Grade = document.getElementById("EWPGrade1").value;
+        data.ewpcourse1Semester = document.getElementById("EWPsemester1").value;
+        data.ewpcomment1 =  document.getElementById("EWPcomment1").value;
+        //data.cwid = document.getElementById("CWID").value;
+        
+        data.firstname = document.getElementById("FirstName").value;
+        data.lastname = document.getElementById("LastName").value;
+        data.email = document.getElementById("email").value;
+        
+        data.course1Name = document.getElementById("course1Name").value;
+        data.course1Number = document.getElementById("course1Number").value;
+        data.course1Grade = document.getElementById("Grade1").value;
+        data.course1Semester = document.getElementById("semester1").value;
+        data.comment1 =  document.getElementById("comment1").value;
+        
+        data.course2Name = document.getElementById("course2Name").value;
+        data.course2Number = document.getElementById("course2Number").value;
+        data.course2Grade = document.getElementById("Grade2").value;
+        data.course2Semester = document.getElementById("semester2").value;
+        data.comment2 =  document.getElementById("comment2").value;
+        
+        data.course3Name = document.getElementById("course3Name").value;
+        data.course3Number = document.getElementById("course3Number").value;
+        data.course3Grade = document.getElementById("Grade3").value;
+        data.course3Semester = document.getElementById("semester3").value;
+        data.comment3 =  document.getElementById("comment3").value;
+        
+        data.course4Name = document.getElementById("course4Name").value;
+        data.course4Number = document.getElementById("course4Number").value;
+        data.course4Grade = document.getElementById("Grade4").value;
+        data.course4Semester = document.getElementById("semester4").value;
+        data.comment4 =  document.getElementById("comment4").value;
+        
+        data.course5Name = document.getElementById("course5Name").value;
+        data.course5Number = document.getElementById("course5Number").value;
+        data.course5Grade = document.getElementById("Grade5").value;
+        data.course5Semester = document.getElementById("semester5").value;
+        data.comment5 =  document.getElementById("comment5").value;
+        
+        data.course6Name = document.getElementById("course6Name").value;
+        data.course6Number = document.getElementById("course6Number").value;
+        data.course6Grade = document.getElementById("Grade6").value;
+        data.course6Semester = document.getElementById("semester6").value;
+        data.comment6 =  document.getElementById("comment6").value;
+        
+        data.course7Name = document.getElementById("course7Name").value;
+        data.course7Number = document.getElementById("course7Number").value;
+        data.course7Grade = document.getElementById("Grade7").value;
+        data.course7Semester = document.getElementById("semester7").value;
+        data.comment7 =  document.getElementById("comment7").value;
+        
+        data.course8Name = document.getElementById("course8Name").value;
+        data.course8Number = document.getElementById("course8Number").value;
+        data.course8Grade = document.getElementById("Grade8").value;
+        data.course8Semester = document.getElementById("semester8").value;
+        data.comment8 =  document.getElementById("comment8").value;
+        
+        data.course9Name = document.getElementById("course9Name").value;
+        data.course9Number = document.getElementById("course9Number").value;
+        data.course9Grade = document.getElementById("Grade9").value;
+        data.course9Semester = document.getElementById("semester9").value;
+        data.comment9 =  document.getElementById("comment9").value;
+        
+        data.course10Name = document.getElementById("course10Name").value;
+        data.course10Number = document.getElementById("course10Number").value;
+        data.course10Grade = document.getElementById("Grade10").value;
+        data.course10Semester = document.getElementById("semester10").value;
+        data.comment10 =  document.getElementById("comment10").value;
+    
+       
+         google.script.run.onSubmit(data);
+         
+         
+    }
+  
+   //From the retrieval.html
+   
+function onSuccess(d)
+    {
+        
+      if(d == null)
+      {
+      console.log("ritoiwtiuuuuuuuuuuuuuuuuuuugggggggggggggggggggggggggggggggggggggggggggggggggg");
+      document.getElementById("retreieform").style.display = "none";
+      document.getElementById("submitform").style.display = "none";
+     
+      document.getElementById("NotFound").style.display = "block";
+      }
+      else{
+         console.log("888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888");
+         data = JSON.parse(d);
+      document.getElementById("retreieform").style.display = "none";
+      document.getElementById("submitform").style.display = "block";
+      
+                 $(".coursename").change(function() {
+                var value = $(this).val();
+				var result;
+				switch(value)
+				{
+					case "Computer System Architecture":
+					result = "CPSC 440";
+					break;
+					
+					case "Software Design":
+					result = "CPSC 462";
+					break;
+										
+					case "Project":
+					result = "CPSC 597";
+					break;
+                    
+                    case "Thesis":
+					result = "CPSC 598";
+					break;
+					
+					case "Systems and Software Standards and Requirements":
+                    result = "CPSC 541";
+					break;
+					
+                    case "Software Verification and Validation":
+                    result = "CPSC 542";
+					break;
+                    
+                    case "Software Maintenance":
+                    result = "CPSC 543";
+					break;
+                    
+                    case "Advanced Software Process":
+                    result = "CPSC 544";
+					break;
+                    
+                    case "Software Design and Architecture":
+                    result = "CPSC 545";
+					break;
+                    
+                    case "Modern Software Management":
+                    result = "CPSC 546";
+					break;
+                    
+                    case "Software Measurement":
+                    result = "CPSC 547";
+					break;
+                    
+                    case "Professional, Ethical and Legal Issues for Software Engineers":
+                    result = "CPSC 548";
+					break;
+				    case "Software Testing":
+result = "CPSC 463";
+break;
+
+case "Software Architecture ":
+result = "CPSC 464";
+break;
+
+case "Software Process":
+result = "CPSC 466";
+break;
+
+case "Database and Applications":
+result = "CPSC 431";
+break;
+
+case "Web Programming and Data Management":
+result = "CPSC 473";
+break;
+
+case "Advanced Database Management":
+result = "CPSC 531";
+break;
+
+case "Cryptography":
+result = "CPSC 452";
+break;
+
+case "Cloud Computing and Security":
+result = "CPSC 454";
+break;
+
+case "Network Security Fundamentals":
+result = "CPSC 456";
+break;
+
+case "Computer Communications":
+result = "CPSC 471";
+break;
+
+case "Advanced Computer Networking":
+result = "CPSC 558";
+break;
+
+case "Operating Systems Design":
+result = "CPSC 551";
+break;
+
+case "Artificial Intelligence":
+result = "CPSC 481";
+break;
+
+case "Data Mining and Pattern Recognition":
+result = "CPSC 483";
+break;
+
+case "Expert Systems Design Theory":
+result = "CPSC 583";
+break;
+case "CPSC 473":
+result = "Web Front-end Engineering";
+break;
+
+case "CPSC 476":
+result = "Web Back-end Engineering";
+break;
+
+case "Artificial Neural Networks":
+result = "CPSC 585";
+break;
+
+case "Computational Bioinformatics":
+result = "CPSC 485";
+break;
+
+case "Principles of Computer Graphics":
+result = "CPSC 484";
+break;
+
+case "Game Programming":
+result = "CPSC 486";
+break;
+
+case "Game Development Project":
+result = "CPSC 489";
+break;
+case  "Advanced Computer Graphics":
+result = "CPSC 566";
+break;
+
+//Math and ISDS
+
+
+case "Database Mgmt Systems":
+                    result = "ISDS 402";
+					break;
+					
+case "Systems Analysis and Design":
+                    result = "ISDS 406";
+					break;
+
+case "Business Telecommunications":
+                    result = "ISDS 409";
+					break;
+
+case "Business Applications":
+                    result = "ISDS 411";
+					break;
+
+case "Principles of Business Intelligence":
+                    result = "ISDS 415" ;
+					break;	
+
+case "Privacy and Security":
+                    result = "ISDS 418";
+					break;
+					
+case "Integ Enterprise Info Systems":
+                    result = "ISDS 435";
+					break;
+
+case "Business Modeling using Spreadsheets":
+                    result = "ISDS 442";
+					break;
+
+case "Marketing Analytics":
+                    result = "ISDS 443";
+					break;
+
+case "Social Media Analytics":
+                    result = "ISDS 44";
+					break;
+
+case "Seminar in Information Systems Development":
+                    result ="ISDS 454";
+					break;
+					
+case "Applied Statistical Forecasting":
+                    result = "ISDS 473";
+					break;
+
+case "Data Mining for Managers":
+                    result = "ISDS 474";
+					break;
+
+case "Wireless Business Networks for IS":
+                    result = "ISDS 485";
+					break;
+
+case "Statistical Analysis":
+                    result = "ISDS 513";
+					break;	
+
+case "Decision Models":
+                    result = "ISDS 514";
+					break;
+					
+case "Logistic Analysis Techniques":
+                    result = "ISDS 516";
+					break;
+
+case "Forecasting for Analytical Decision Making":
+                    result = "ISDS 526";
+					break;
+
+case "Marketing Analytics for Managers":
+                    result = "ISDS 543";
+					break;
+
+case "Telecommunications and Business Networks":
+                    result = "ISDS 550";
+					break;
+
+case "Information Resource & IT Project Management":
+                    result = "ISDS 551";
+					break;
+					
+case "Systems Analysis and Design":
+                    result = "ISDS 552";
+					break;
+
+case "E-Commerce: Analysis & Evaluation":
+                    result = "ISDS 553";
+					break;
+
+case "Business Databases: Design and Processing":
+                    result = "ISDS 555";
+					break;
+
+case "Data Warehousing and Foundations of Business Intelligence":
+                    result = "ISDS 556";
+					break;	
+
+case "Issues in Business Information Technology":
+                    result = "ISDS 557";
+					break;
+					
+case "Advance Deterministic Models":
+                    result = "ISDS 560";
+					break;
+
+case "GIS for Business":
+                    result = "ISDS 563";
+					break;
+
+case "Data Mining for Business Applications":
+                    result = "ISDS 574";
+					break;
+
+case "Mathematical Structure I":
+                    result ="MATH 270A";
+					break;
+
+case "Mathematical Structure II":
+                    result = "MATH 270B";
+					break;
+
+case "Statistical Applied to Natural Sciences":
+                    result = "MATH 338";
+					break;					
+					
+					
+									
+				}
+				if($(this).attr('id') == "course1Name")
+                $("#course1Number").val(result);
+				
+				if($(this).attr('id') == "course2Name")
+                $("#course2Number").val(result);
+                
+                if($(this).attr('id') == "course3Name")
+                $("#course3Number").val(result);
+				
+				if($(this).attr('id') == "course4Name")
+                $("#course4Number").val(result);
+                
+                if($(this).attr('id') == "course5Name")
+                $("#course5Number").val(result);
+				
+				if($(this).attr('id') == "course6Name")
+                $("#course6Number").val(result);
+                
+                if($(this).attr('id') == "course7Name")
+                $("#course7Number").val(result);
+                
+                if($(this).attr('id') == "course8Name")
+                $("#course8Number").val(result);
+                
+                if($(this).attr('id') == "course10Name")
+                $("#course10Number").val(result);
+                
+                 
+            });
+     
+document.getElementById("CWIDsubmit").value	 = 	data[	0	];
+document.getElementById("EWPDate").value	 = 	data[	1	];
+document.getElementById("FirstName").value	 = 	data[	2	];
+document.getElementById("LastName").value	 = 	data[	3	];
+document.getElementById("email").value	 = 	data[	4	];
+document.getElementById("course1Name").value	 = 	data[	5	];
+document.getElementById("course1Number").value	 = 	data[	6	];
+document.getElementById("Grade1").value	 = 	data[	7	];
+document.getElementById("semester1").value	 = 	data[	8	];
+document.getElementById("comment1").value	 = 	data[	9	];
+document.getElementById("course2Name").value	 = 	data[	10	];
+document.getElementById("course2Number").value	 = 	data[	11	];
+document.getElementById("Grade2").value	 = 	data[	12	];
+document.getElementById("semester2").value	 = 	data[	13	];
+document.getElementById("comment2").value	 = 	data[	14	];
+document.getElementById("course3Name").value	 = 	data[	15	];
+document.getElementById("course3Number").value	 = 	data[	16	];
+document.getElementById("Grade3").value	 = 	data[	17	];
+document.getElementById("semester3").value	 = 	data[	18	];
+document.getElementById("comment3").value	 = 	data[	19	];
+document.getElementById("course4Name").value	 = 	data[	20	];
+document.getElementById("course4Number").value	 = 	data[	21	];
+document.getElementById("Grade4").value	 = 	data[	22	];
+document.getElementById("semester4").value	 = 	data[	23	];
+document.getElementById("comment4").value	 = 	data[	24	];
+document.getElementById("course5Name").value	 = 	data[	25	];
+document.getElementById("course5Number").value	 = 	data[	26	];
+document.getElementById("Grade5").value	 = 	data[	27	];
+document.getElementById("semester5").value	 = 	data[	28	];
+document.getElementById("comment5").value	 = 	data[	29	];
+document.getElementById("course6Name").value	 = 	data[	30	];
+document.getElementById("course6Number").value	 = 	data[	31	];
+document.getElementById("Grade6").value	 = 	data[	32	];
+document.getElementById("semester6").value	 = 	data[	33	];
+document.getElementById("comment6").value	 = 	data[	34	];
+document.getElementById("course7Name").value	 = 	data[	35	];
+document.getElementById("course7Number").value	 = 	data[	36	];
+document.getElementById("Grade7").value	 = 	data[	37	];
+document.getElementById("semester7").value	 = 	data[	38	];
+document.getElementById("comment7").value	 = 	data[	39	];
+document.getElementById("course8Name").value	 = 	data[	40	];
+document.getElementById("course8Number").value	 = 	data[	41	];
+document.getElementById("Grade8").value	 = 	data[	42	];
+document.getElementById("semester8").value	 = 	data[	43	];
+document.getElementById("comment8").value	 = 	data[	44	];
+document.getElementById("course9Name").value	 = 	data[	45	];
+document.getElementById("course9Number").value	 = 	data[	46	];
+document.getElementById("Grade9").value	 = 	data[	47	];
+document.getElementById("semester9").value	 = 	data[	48	];
+document.getElementById("comment9").value	 = 	data[	49	];
+document.getElementById("course10Name").value	 = 	data[	50	];
+document.getElementById("course10Number").value	 = 	data[	51	];
+document.getElementById("Grade10").value	 = 	data[	52	];
+document.getElementById("semester10").value	 = 	data[	53	];
+document.getElementById("comment10").value	 = 	data[	54	];
+
+
+
+document.getElementById("Check1").checked	 = 	data[	55	];
+document.getElementById("Check2").checked	 = 	data[	56	];
+document.getElementById("Check3").checked	 = 	data[	57	];
+document.getElementById("Check4").checked	 = 	data[	58	];
+document.getElementById("Check5").checked	 = 	data[	59	];
+document.getElementById("Check6").checked	 = 	data[	60	];
+document.getElementById("Check7").checked	 = 	data[	61	];
+document.getElementById("Check8").checked	 = 	data[	62	];
+document.getElementById("CPSC 121").checked	 = 	data[	63	];
+document.getElementById("CPSC 323").checked	 = 	data[	64	];
+document.getElementById("CPSC 363").checked	 = 	data[	65	];
+document.getElementById("CPSC 270A").checked	 = 	data[	66	];
+document.getElementById("CPSC 131").checked	 = 	data[	67	];
+document.getElementById("CPSC 335").checked	 = 	data[	68	];
+document.getElementById("CPSC 270B").checked	 = 	data[	69	];
+document.getElementById("CPSC 240").checked	 = 	data[	70	];
+document.getElementById("CPSC 351").checked	 = 	data[	71	];
+document.getElementById("CPSC 338").checked	 = 	data[	72	];
+
+document.getElementById("from").value	 = 	data[	73	];
+
+
+//document.getElementById("mon").value	 = dateformat(	data[	74	], 'yyyy-mm');
+document.getElementById("mon").value =data[	74	];
+document.getElementById("undermajor").value	 = 	data[	75	];
+
+document.getElementById("EWPcourse1Name").value	 = 	data[	76	];
+document.getElementById("EWPcourse1Number").value	 = 	data[	77	];
+document.getElementById("EWPGrade1").value	 = 	data[	78	];
+document.getElementById("EWPsemester1").value	 = 	data[	79	];
+document.getElementById("EWPcomment1").value	 = 	data[	80	];
+		
+
+        
+      } 
+        
+    }
+ function doRetrive()
+    {        
+                
+        var cwid = document.getElementById("cwid").value;
+       google.script.run.withSuccessHandler(onSuccess).retrievaldata(cwid);
+        
+        
+     
+                
+    }
+     $(".coursenumber").change(function() {
+                var value = $(this).val();
+				var result;
+				switch(value)
+				{
+					case "CPSC 440":
+					result = "Computer System Architecture";
+					break;
+					
+					case "CPSC 462":
+					result = "Software Design";
+					break;
+										
+					case "CPSC 597":
+					result = "Project";
+					break;
+                    
+                   			case "CPSC 598":
+					result = "Thesis";
+					break;
+					
+					case "CPSC 541":
+                    result = "Systems and Software Standards and Requirements";
+					break;
+					
+                    case "CPSC 542":
+                    result = "Software Verification and Validation";
+					break;
+                    
+                    case "CPSC 543":
+                    result = "Software Maintenance";
+					break;
+                    
+                    case "CPSC 544":
+                    result = "Advanced Software Process";
+					break;
+                    
+                    case "CPSC 545":
+                    result = "Software Design and Architecture";
+					break;
+                    
+                    case "CPSC 546":
+                    result = "Modern Software Management";
+					break;
+                    
+                    case "CPSC 547":
+                    result = "Software Measurement";
+					break;
+                    
+                    case "CPSC 548":
+                    result = "Professional, Ethical and Legal Issues for Software Engineers";
+					break;
+		    case "CPSC 463":
+		     result = "Software Testing";
+			break;
+
+		case "CPSC 464":
+		result = "Software Architecture";
+		break;
+
+		case "CPSC 466":
+		result = "Software Process";
+		break;
+
+		case "CPSC 431":
+		result = "Database and Applications";
+		break;
+
+		case "CPSC 473":
+		result = "Web Programming and Data Management";
+		break;
+
+		case "CPSC 531":
+		result = "Advanced Database Management";
+		break;
+
+		case "CPSC 452":
+		result = "Cryptography";
+		break;
+
+		case "CPSC 454":
+		result = "Cloud Computing and Security";
+		break;
+
+		case "CPSC 456":
+result = "Network Security Fundamentals";
+break;
+
+case "CPSC 471":
+result = "Computer Communications";
+break;
+
+case "CPSC 558":
+result = "Advanced Computer Networking";
+break;
+
+case "CPSC 551":
+result = "Operating Systems Design";
+break;
+
+case "CPSC 481":
+result = "Artificial Intelligence";
+break;
+
+case "CPSC 483":
+result = "Data Mining and Pattern Recognition";
+break;
+
+case "CPSC 583":
+result = "Expert Systems Design Theory";
+break;
+
+case "CPSC 585":
+result = "Artificial Neural Networks";
+break;
+
+case "CPSC 485":
+result = "Computational Bioinformatics";
+break;
+
+case "CPSC 484":
+result = "Principles of Computer Graphics";
+break;
+
+case "CPSC 486":
+result = "Game Programming";
+break;
+
+case "CPSC 489":
+result = "Game Development Project";
+break;
+case  "CPSC 566":
+result = "Advanced Computer Graphics";
+break;
+
+
+					
+									
+				}
+				if($(this).attr('id') == "course1Number")
+                $("#course1Name").val(result);
+				
+				if($(this).attr('id') == "course2Number")
+                $("#course2Name").val(result);
+                
+                if($(this).attr('id') == "course3Number")
+                $("#course3Name").val(result);
+				
+				if($(this).attr('id') == "course4Number")
+                $("#course4Name").val(result);
+                
+                if($(this).attr('id') == "course5Number")
+                $("#course5Name").val(result);
+				
+				if($(this).attr('id') == "course6Number")
+                $("#course6Name").val(result);
+                
+                if($(this).attr('id') == "course7Number")
+                $("#course7Name").val(result);
+                
+                if($(this).attr('id') == "course8Number")
+                $("#course8Name").val(result);
+                
+		if($(this).attr('id') == "course9Number")
+                $("#course9Name").val(result);
+                
+                if($(this).attr('id') == "course10Number")
+                $("#course10Name").val(result);
+                
+                 
+            });
+    </script>
+  </head>
+  <body>
+    
+  </body>
+</html>
+
+
